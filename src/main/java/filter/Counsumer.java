@@ -15,7 +15,7 @@ public class Counsumer {
         // 指定Namesrv地址信息.
         consumer.setNamesrvAddr("159.75.115.106:9876");
         // 订阅Topic
-        consumer.subscribe("FilterTagTopic", "Tag1");
+        consumer.subscribe("FilterTagTopic", "Tag1 || Tag2");
         //负载均衡模式消费
         //consumer.setMessageModel(MessageModel.CLUSTERING);
         // 注册回调函数，处理消息
