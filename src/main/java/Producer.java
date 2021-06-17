@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Producer {
     public static void main(String[] args) throws Exception {
-        DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
+        DefaultMQProducer producer = new DefaultMQProducer("group1");
 
         producer.setNamesrvAddr("159.75.115.106:9876");
 
@@ -28,7 +28,7 @@ public class Producer {
         for (int i = 0; i < 10; i++) {
             // 加个时间前缀
             String body = dateStr + " Hello RocketMQ " + orderList.get(i);
-            Message msg = new Message("TopicTest", tags[i % tags.length], "KEY" + i, body.getBytes());
+            Message msg = new Message("OrderTopic","Order", "KEY" + i, body.getBytes());
 
             SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
                 @Override
